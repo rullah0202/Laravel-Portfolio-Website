@@ -66,9 +66,13 @@
     <div class="modal-content">
       <div class="modal-body p-5 text-center">
 	  	  <h5 id="serviceEditId" class="mt-4">   </h5>
-	  	  <input id="serviceNameID" type="text" id="" class="form-control mb-4" placeholder="Service Name">
-          <input id="serviceDesID" type="text" id="" class="form-control mb-4" placeholder="Service Description">
-          <input id="serviceImgID" type="text" id="" class="form-control mb-4" placeholder="Service Image Link">
+			<div id="serviceEditForm" class="d-none w-100">
+				<input id="serviceNameID" type="text" id="" class="form-control mb-4" placeholder="Service Name">
+				<input id="serviceDesID" type="text" id="" class="form-control mb-4" placeholder="Service Description">
+				<input id="serviceImgID" type="text" id="" class="form-control mb-4" placeholder="Service Image Link">
+			</div>
+		  <img id="serviceEditLoader" class="loading-icon" src="{{asset('images/loader.svg')}}"/>
+		  <h5 id="serviceEditWrong" class="d-none">Something Went Wrong</h5>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>

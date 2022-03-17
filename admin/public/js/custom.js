@@ -35,6 +35,7 @@ function getServicesData() {
                 $('.serviceEditBtn').click(function() {
                     var id = $(this).data('id');
                     $('#serviceEditId').html(id);
+                    ServiceUpdateDetails(id);
                     $('#editModal').modal('show');
                 })
 
@@ -85,16 +86,28 @@ function ServiceDelete(deleteID) {
         });
 }
 
-// Each Service Details
-function ServiceDetails(detailsID) {
+// Each Services Update Details
+function ServiceUpdateDetails(detailsID) {
   
-      axios.get('/ServiceDetails', {
+      axios.post('/ServiceDetails', {
               id: detailsID
           })
           .then(function(response) {
-
+            if(response.status==200){
+                $('#serviceEditForm').removeClass('d-none');
+                $('#serviceEditLoader').addClass('d-none');
+                var jsonData = response.data;
+                $('#serviceNameID').val(jsonData[0].service_name);
+                $('#serviceDesID').val(jsonData[0].service_des);
+                $('#serviceImgID').val(jsonData[0].service_img);
+            }
+            else{
+                $('#serviceEditWrong').removeClass('d-none');
+                $('#serviceEditLoader').addClass('d-none');
+            }
           })
           .catch(function(error) {
-
+                            $('#serviceEditWrong').removeClass('d-none');
+                $('#serviceEditLoader').addClass('d-none');
           });
   }
