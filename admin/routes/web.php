@@ -19,3 +19,6 @@ use App\Http\Controllers\ServiceController;
 Route::get('/', [HomeController::class,'HomeIndex']);
 Route::get('/visitor', [VisitorController::class,'VisitorIndex']);
 Route::get('/service', [ServiceController::class,'ServiceIndex']);
+Route::get('/getServicesData', [ServiceController::class,'getServiceData']);
+Route::post('/ServiceDelete', [ServiceController::class,'ServiceDelete']);
+Route::post('/ServiceDetails', [ServiceController::class,'getServiceDetails']);
